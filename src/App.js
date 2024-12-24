@@ -6,6 +6,7 @@ import About from "./components/About/About";
 import Projects from "./components/Projects/Projects";
 import Footer from "./components/Footer";
 import Resume from "./components/Resume/ResumeNew";
+import MailButton from './components/MailButton';
 import {
   BrowserRouter as Router,
   Route,
@@ -37,7 +38,6 @@ function Redirect({ to }) {
     </div>
   );
 }
-
 
 function App() {
   const [load, upadateLoad] = useState(true);
@@ -72,6 +72,7 @@ function App() {
           {/* Catch-all Route */}
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
+        <MailButton />
         <Footer />
       </div>
     </Router>
