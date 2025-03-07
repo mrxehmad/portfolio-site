@@ -64,7 +64,7 @@ function App() {
 
           {/* Redirect Routes */}
           <Route path="/linkedin" element={<Redirect to="https://www.linkedin.com/in/it-guy-ahmad/" />} />
-          <Route path="/x" element={<Redirect to="https://x.com/it_guy_ahmad" />} />
+          <Route path="/x" element={<Redirect to="https://x.com/Ehmi0k" />} />
           <Route path="/discord" element={<Redirect to="https://discord.com/users/mrxehmad" />} />
           <Route path="/github" element={<Redirect to="https://github.com/mrxehmad" />} />
           <Route path="/instagram" element={<Redirect to="https://www.instagram.com/ehmi._/" />} />
