@@ -1,11 +1,12 @@
-module.exports = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
     images: {
       domains: ['avatars.githubusercontent.com'],
       unoptimized: true,
     },
-    output: 'export',  // Add this line to specify static export
+    output: 'standalone', // Use standalone for static build
     webpack: (config, { isServer }) => {
       // Optimize bundle size
       config.optimization = {
@@ -36,4 +37,6 @@ module.exports = {
       return config;
     },
   };
+  
+  module.exports = nextConfig;
   
