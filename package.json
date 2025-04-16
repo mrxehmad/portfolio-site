@@ -2,12 +2,13 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "analyze": "ANALYZE=true next build"
-  },
+"scripts": {
+  "dev": "next dev",
+  "build": "next build && next export",
+  "start": "serve out",
+  "analyze": "ANALYZE=true next build"
+},
+
   "dependencies": {
     "@fontsource/lora": "^4.2.2",
     "@fontsource/poppins": "^4.2.2",
