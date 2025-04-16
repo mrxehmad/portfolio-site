@@ -4,15 +4,18 @@
       [
         "module-resolver",
         {
-          "root": ["./"],
+          "root": ["."],
           "alias": {
             "@components": "./components",
-            "@public": "./public",
             "@styles": "./styles",
-            "@helpers": "./helpers",
-            "@data": "./data"
+            "@public": "./public"
           }
         }
       ]
-    ]
+    ],
+    "env": {
+      "production": {
+        "plugins": ["transform-remove-console"]
+      }
+    }
   }
