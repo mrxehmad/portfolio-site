@@ -28,7 +28,7 @@ const MetaTags = ({
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
       <meta property="og:url" content={url} />
-      <meta property="og:title" content={`${title} | Ahmad Faraz`} />
+      <meta property="og:title" content={`${title} | Ehmi`} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
       
