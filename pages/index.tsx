@@ -48,7 +48,7 @@ const itemSlideUp = {
 const Home = () => {
   return (
     <>
-      <MetaTags title="Ehmi | DevOps Engineer" />
+      <MetaTags title="DevOps Engineer" />
       <section className="relative overflow-hidden min-h-screen w-full flex items-center md:pt-0 pt-16 dark:bg-dark-theme">
         <motion.h1
           initial="hidden"

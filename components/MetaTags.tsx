@@ -18,7 +18,7 @@ const MetaTags = ({
   return (
     <Head>
       {/* Primary Meta Tags */}
-      <title>{title} | Ahmad Faraz</title>
+      <title>{title} | Ehmi</title>
       <meta name="title" content={`${title} | Ehmi`} />
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
