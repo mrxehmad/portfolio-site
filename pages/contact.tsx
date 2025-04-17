@@ -12,9 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { item, itemSlideUp, list } from "@helpers/animation";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
-
 import React from "react";
-import axios from "axios";
 import toast from "react-hot-toast";
 import MetaTags from "@components/MetaTags";
 
@@ -22,30 +20,35 @@ const Contact = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
     reset,
   } = useForm();
 
   const onSubmit = async (data) => {
-    const config = {
-      headers: {
-        "Content-type": "application/json",
-      },
-    };
     try {
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_URL_API}/api/contact`,
-        data,
-        config
-      );
-      if (response.status === 200) {
+      const response = await fetch("https://formspree.io/f/xeoawnqb", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          message: data.msg
+        }),
+      });
+      
+      if (response.ok) {
         reset();
-        toast.success("Your Message is Successfully Sent");
+        toast.success("Your message has been sent successfully!");
+      } else {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Failed to send message");
       }
     } catch (err) {
-      console.log(err.message);
+      console.error("Form submission error:", err);
       toast.error(
-        "Error accured while sending your Message, please try again later"
+        err.message || "An error occurred while sending your message. Please try again later."
       );
     }
   };
@@ -71,12 +74,17 @@ const Contact = () => {
                   {...register("name", {
                     required: {
                       value: true,
-                      message: "this field is required",
+                      message: "Name is required",
+                    },
+                    minLength: {
+                      value: 2,
+                      message: "Name must be at least 2 characters",
                     },
                   })}
                   placeholder="Your Name"
-                  className={`focus:outline-none shadow w-full border bg-transparent dark:border-primary p-2 border-gray-200  text-gray-500 dark:text-gray-200 rounded-md 
-                ${errors.name && "ring-1 ring-red-500"}`}
+                  className={`focus:outline-none shadow w-full border bg-transparent dark:border-primary p-2 border-gray-200 text-gray-500 dark:text-gray-200 rounded-md 
+                    ${errors.name && "ring-1 ring-red-500"}`}
+                  disabled={isSubmitting}
                 />
                 <span className="text-red-300 text-sm font-main">
                   {errors?.name?.message}
@@ -89,16 +97,17 @@ const Contact = () => {
                   {...register("email", {
                     required: {
                       value: true,
-                      message: "this field is required",
+                      message: "Email is required",
                     },
                     pattern: {
-                      value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
-                      message: "Please enter a valid email",
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                      message: "Please enter a valid email address",
                     },
                   })}
                   placeholder="Your Email"
-                  className={`focus:outline-none shadow w-full border dark:border-primary bg-transparent dark:text-gray-200 p-2 border-gray-200  text-gray-500 rounded-md 
-                ${errors.email && "ring-1 ring-red-500"}`}
+                  className={`focus:outline-none shadow w-full border dark:border-primary bg-transparent dark:text-gray-200 p-2 border-gray-200 text-gray-500 rounded-md 
+                    ${errors.email && "ring-1 ring-red-500"}`}
+                  disabled={isSubmitting}
                 />
                 <span className="text-red-300 text-sm font-main">
                   {errors?.email?.message}
@@ -111,21 +120,21 @@ const Contact = () => {
                   {...register("msg", {
                     required: {
                       value: true,
-                      message: "this field is required",
+                      message: "Message is required",
+                    },
+                    minLength: {
+                      value: 10,
+                      message: "Message must be at least 10 characters",
                     },
                     maxLength: {
                       value: 1000,
-                      message:
-                        "Your message can't be more then 1000 characters",
-                    },
-                    minLength: {
-                      value: 20,
-                      message: "Your message can't be less then 20 characters",
+                      message: "Message cannot exceed 1000 characters",
                     },
                   })}
                   placeholder="Your Message"
-                  className={`focus:outline-none shadow w-full border bg-transparent  p-2 border-gray-200 dark:border-primary dark:text-gray-200  text-gray-500 rounded-md 
-                ${errors.msg && "ring-1 ring-red-500"}`}
+                  className={`focus:outline-none shadow w-full border bg-transparent p-2 border-gray-200 dark:border-primary dark:text-gray-200 text-gray-500 rounded-md 
+                    ${errors.msg && "ring-1 ring-red-500"}`}
+                  disabled={isSubmitting}
                 ></textarea>
                 <span className="text-red-300 text-sm font-main">
                   {errors?.msg?.message}
@@ -134,9 +143,12 @@ const Contact = () => {
               <motion.div variants={itemSlideUp} className="text-center">
                 <button
                   type="submit"
-                  className="rounded bg-primary text-black font-main font-bold px-4 py-1 place-self-center"
+                  disabled={isSubmitting}
+                  className={`rounded bg-primary text-black font-main font-bold px-4 py-1 place-self-center ${
+                    isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
                 >
-                  Deploy Message
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </button>
               </motion.div>
             </motion.form>
