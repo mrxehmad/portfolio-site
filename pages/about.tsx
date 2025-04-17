@@ -61,7 +61,7 @@ const About = () => {
               custom={0.3}
               className="text-main font-semibold text-lg leading-relaxed text-gray-800 dark:text-gray-200 mb-6"
             >
-              Hi Everyone, I am Ahmad Faraz from Pakistan.
+              Hi Everyone, I am Ahmad from Pakistan.
               I am currently studying BSCYS.
               Apart from coding, my main focus is in areas of DevOps, Network Security, and Application Security. I am passionate about automating workflows, securing systems, and building scalable, robust infrastructures.
 

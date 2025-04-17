@@ -9,7 +9,7 @@ const Logo = () => {
       variants={slideDown}
       custom={0.3}
     >
-      <span className="text-2xl font-bold bg-black text-white dark:bg-white dark:text-black px-3 py-1">
+      <span className="text-2xl font-bold bg-black text-white dark:bg-white dark:text-black px-3 py-1 select-none">
         EHMI
       </span>
     </motion.div>

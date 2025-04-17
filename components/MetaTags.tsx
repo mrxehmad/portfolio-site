@@ -10,7 +10,7 @@ interface MetaTagsProps {
 
 const MetaTags = ({ 
   title, 
-  description = "Ahmad Faraz - DevOps Engineer & Security Specialist. Experienced in Docker, Kubernetes, Jenkins, AWS, Terraform, and Ansible. Passionate about automating workflows, securing systems, and building scalable infrastructures.",
+  description = "Ehmi - DevOps Engineer & Security Specialist. Experienced in Docker, Kubernetes, Jenkins, AWS, Terraform, and Ansible. Passionate about automating workflows, securing systems, and building scalable infrastructures.",
   keywords = "DevOps, Network Security, Application Security, Docker, Kubernetes, Jenkins, AWS, Terraform, Ansible, CI/CD, Linux, Git, Python, Bash Scripting, Infrastructure as Code, Monitoring & Logging",
   image = "/og-image.png",
   url = "https://ehmad.site"
