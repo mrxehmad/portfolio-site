@@ -14,16 +14,55 @@ interface Repo {
 const GithubRepos = () => {
   const [repos, setRepos] = useState<Repo[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchRepos = async () => {
       try {
-        const response = await fetch('https://api.github.com/users/mrxehmad/repos?sort=created&direction=desc&per_page=26');
+        // Add GitHub token if available
+        const headers: HeadersInit = {
+          'Accept': 'application/vnd.github.v3+json'
+        };
+        
+        // If you have a GitHub token, uncomment and add it here
+        // if (process.env.NEXT_PUBLIC_GITHUB_TOKEN) {
+        //   headers['Authorization'] = `token ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`;
+        // }
+
+        const response = await fetch(
+          'https://api.github.com/users/mrxehmad/repos?sort=created&direction=desc&per_page=6',
+          { headers }
+        );
+
+        if (!response.ok) {
+          if (response.status === 403) {
+            throw new Error('GitHub API rate limit exceeded. Please try again later.');
+          }
+          throw new Error(`GitHub API error: ${response.status}`);
+        }
+
         const data = await response.json();
+        
+        if (!Array.isArray(data)) {
+          throw new Error('Invalid response from GitHub API');
+        }
+
         setRepos(data);
-        setLoading(false);
       } catch (error) {
         console.error('Error fetching GitHub repos:', error);
+        setError(error instanceof Error ? error.message : 'Failed to fetch repositories');
+        // Set some fallback data
+        setRepos([
+          {
+            name: 'mrxehmad.github.io',
+            description: 'My personal portfolio website',
+            html_url: 'https://github.com/mrxehmad/mrxehmad.github.io',
+            stargazers_count: 0,
+            forks_count: 0,
+            created_at: new Date().toISOString()
+          }
+        ]);
+      } finally {
         setLoading(false);
       }
     };
@@ -32,7 +71,19 @@ const GithubRepos = () => {
   }, []);
 
   if (loading) {
-    return <div className="text-center">Loading repositories...</div>;
+    return (
+      <div className="text-center text-gray-600 dark:text-gray-300">
+        Loading repositories...
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="text-center text-red-500 dark:text-red-400">
+        {error}
+      </div>
+    );
   }
 
   return (
