@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
-
+// This file redirects to LinkedIn profile
 const LinkedInRedirect = () => {
   useEffect(() => {
-    window.location.href = 'https://www.linkedin.com/in/it-guy-ahmad/';
+    window.location.href = 'https://www.linkedin.com/in/ehmi/';
   }, []);
 
   return null;

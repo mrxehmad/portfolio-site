@@ -8,9 +8,9 @@ const SocialRedirect = () => {
   useEffect(() => {
     if (platform && typeof platform === 'string') {
       const redirects: Record<string, string> = {
-        linkedin: 'https://www.linkedin.com/in/it-guy-ahmad/',
+        linkedin: 'https://www.linkedin.com/in/ehmi/',
         x: 'https://x.com/Ehmi0k',
-        discord: 'https://discord.com/users/mrxehmad',
+        discord: 'https://discord.com/users/xehmad',
         github: 'https://github.com/mrxehmad',
         instagram: 'https://www.instagram.com/ehmi._/'
       };
