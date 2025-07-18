@@ -1,23 +1,44 @@
-import { useRef } from "react";
+"use client";
+
+import { useRef, useState, useEffect } from "react";
 
 export default function RickRoll() {
-    const videoRef = useRef<HTMLVideoElement>(null);
+    const videoRef = useRef<HTMLVideoElement | null>(null);
+    const [started, setStarted] = useState(false);
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        // Avoid running video-related code during SSR
+        setIsClient(true);
+    }, []);
 
     const handleClick = async () => {
-        const video = videoRef.current;
-        if (!video) return;
+        if (!videoRef.current) return;
 
+        const video = videoRef.current;
         video.muted = false;
 
         try {
             await video.play();
-            if (video.requestFullscreen) {
-                await video.requestFullscreen();
+
+            // Safely request fullscreen
+            const requestFullscreen = 
+                video.requestFullscreen ||
+                (video as any).webkitRequestFullscreen ||
+                (video as any).mozRequestFullScreen ||
+                (video as any).msRequestFullscreen;
+
+            if (requestFullscreen) {
+                requestFullscreen.call(video);
             }
-        } catch (err) {
-            console.error("Error trying to play video:", err);
+
+            setStarted(true);
+        } catch (error) {
+            console.error("Video playback failed:", error);
         }
     };
+
+    if (!isClient) return null; // Ensure code only runs on client
 
     return (
         <div
@@ -35,22 +56,27 @@ export default function RickRoll() {
                 flexDirection: "column",
             }}
         >
-            <button
-                onClick={handleClick}
-                style={{
-                    padding: "1rem 2rem",
-                    fontSize: "1.5rem",
-                    cursor: "pointer",
-                    zIndex: 10000,
-                }}
-            >
-                Click Me 👀
-            </button>
+            {!started && (
+                <button
+                    onClick={handleClick}
+                    style={{
+                        padding: "1rem 2rem",
+                        fontSize: "1.5rem",
+                        cursor: "pointer",
+                        zIndex: 10000,
+                        background: "#fff",
+                        color: "#000",
+                        border: "none",
+                        borderRadius: "8px",
+                    }}
+                >
+                    Click Me 👀
+                </button>
+            )}
 
             <video
                 ref={videoRef}
                 src="https://s3.tebi.io/storage-cluster-01/rickroll-output.mp4"
-                title="Rick Astley - Never Gonna Give You Up"
                 loop
                 controls={false}
                 playsInline
@@ -64,12 +90,11 @@ export default function RickRoll() {
                     objectFit: "cover",
                     zIndex: 9998,
                     pointerEvents: "none",
-                    display: "none", // hide initially
-                }}
-                onPlay={(e) => {
-                    e.currentTarget.style.display = "block"; // show video once playing
+                    display: started ? "block" : "none",
                 }}
             />
         </div>
     );
 }
+// This code is a React component that plays a RickRoll video when the user clicks a button.
+// // It uses the useRef hook to reference the video element and the useState hook to manage
