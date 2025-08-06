@@ -22,7 +22,7 @@ const Navbar = ({ setDarkTheme, isDarkTheme }) => {
     { link: "/", name: "home", icon: faHome },
     { link: "/projects", name: "projects", icon: faCode },
     { link: "/about", name: "about", icon: faAddressCard },
-    { link: "https://blog.ehmad.site", name: "blog", icon: faBlog, external: true },
+    { link: "/blog", name: "blog", icon: faBlog, external: true },
     { link: "/contact", name: "contact", icon: faEnvelope },
     { link: "/social", name: "socials", icon: faUsers },
   ];
