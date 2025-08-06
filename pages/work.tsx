@@ -22,46 +22,9 @@ const Work = () => {
             variants={list}
             className="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3"
           >
-            {projects.map(({ id, name, img, linkToPage, linkToSrc }) => (
-              <motion.div variants={itemSlideUp} key={id}>
-                <Link href={`/details/${id}`}>
-                  <a>
-                    <Image
-                      src={img}
-                      width={345}
-                      height={216}
-                      layout="responsive"
-                      className="rounded"
-                      alt="work"
-                    />
-                  </a>
-                </Link>
-                <div className="mt-4 flex justify-between items-center">
-                  <h4 className="font-main text-md font-bold capitalize dark:text-gray-100">
-                    {name}
-                  </h4>
-                  <div className="flex space-x-4 dark:text-gray-100">
-                    <a
-                      href={linkToPage}
-                      rel="noopener noreferrer"
-                      target="_blank"
-                    >
-                      <FontAwesomeIcon
-                        className="w-4"
-                        icon={faExternalLinkAlt}
-                      />
-                    </a>
-                    <a
-                      href={linkToSrc}
-                      rel="noopener noreferrer"
-                      target="_blank"
-                    >
-                      <FontAwesomeIcon className="w-4" icon={faGithub} />
-                    </a>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+            <div className="col-span-full text-center py-12 text-gray-500 dark:text-gray-300">
+              No projects are currently available.
+            </div>
           </motion.div>
         </div>
       </section>
