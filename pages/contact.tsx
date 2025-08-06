@@ -2,7 +2,7 @@ import Heading from "@components/Heading";
 import {
   faDiscord,
   faGithub,
-  faInstagram,
+  faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 import {
   faEnvelope,
@@ -220,9 +220,9 @@ const Contact = () => {
                     className="hover:text-primary dark:text-primary"
                     rel="noopener noreferrer"
                     target="_blank"
-                    href="/instagram"
+                    href="/linkedin"
                   >
-                    <FontAwesomeIcon className="w-4" icon={faInstagram} />
+                    <FontAwesomeIcon className="w-4" icon={faLinkedin} />
                   </motion.a>
                   <motion.a
                     variants={itemSlideUp}

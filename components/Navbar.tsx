@@ -11,6 +11,7 @@ import {
   faMoon,
   faSun,
   faBlog,
+  faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Logo from "./Logo";
@@ -23,6 +24,7 @@ const Navbar = ({ setDarkTheme, isDarkTheme }) => {
     { link: "/about", name: "about", icon: faAddressCard },
     { link: "https://blog.ehmad.site", name: "blog", icon: faBlog, external: true },
     { link: "/contact", name: "contact", icon: faEnvelope },
+    { link: "/social", name: "socials", icon: faUsers },
   ];
 
   const [isOpen, setOpen] = useState(false);

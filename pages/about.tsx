@@ -69,14 +69,13 @@ const About = () => {
 
               Apart from my professional work, some other activities that I love to do include:
               <br />
-              • Playing Games
+              • Reading Books 
               <br />
               • Writing Tech Blogs
               <br />
               • Travelling
               <br />
               <br />
-              "Working with Ehmi is like merging with perfection — no conflicts, only smooth deployments."
             </motion.p>
             <motion.h3
               initial="hidden"

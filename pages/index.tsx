@@ -9,19 +9,19 @@ import {
 } from "@helpers/animation";
 import MetaTags from "@components/MetaTags";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import Shape from "@components/Shape";
 const buttonTexts = [
-  "Touch My API",
-  "Talk Gitty to Me",
-  "Expose Your Endpoints",
-  "Push to My Repo",
-  "Inject Your Dependency",
-  "Sudo Make Me a Sandwich",
-  "Let's Break the Build",
-  "You Auto-Scaled Into My Heart",
-  "Mount My Volume",
-  "Let's Get Infr-astructural",
+  "Contact Me",
+  "Request a Consultation",
+  "Schedule a Meeting",
+  "Send an Inquiry",
+  "Connect with Me",
+  "Let's Collaborate",
+  "Discuss Your Project",
+  "Get in Touch",
+  "Start a Conversation",
+  "Reach Out Today",
 ];
 
 const randomButtonText =
@@ -86,7 +86,7 @@ const Home = () => {
                   className="md:text-2xl text-lg dark:text-gray-300 text-gray-700 font-lora capitalize"
                 >
                   DevOps <br />
-                  engineer <br /> based in London.
+                  engineer <br /> based in Pakistan.
                 </motion.p>
                 <motion.div
                   initial="hidden"
@@ -99,9 +99,9 @@ const Home = () => {
                     className="hover:text-primary dark:text-primary"
                     rel="noopener noreferrer"
                     target="_blank"
-                    href="/instagram"
+                    href="/linkedin"
                   >
-                    <FontAwesomeIcon className="w-6 h-6" icon={faInstagram} />
+                    <FontAwesomeIcon className="w-6 h-6" icon={faLinkedin} />
                   </motion.a>
                   <motion.a
                     variants={itemSlideUp}
@@ -121,11 +121,11 @@ const Home = () => {
               variants={slideUp}
               whileTap={{ scale: 0.9 }}
               custom={0.6}
-              title="Don't worry, it's idempotent 😘"
               className={`${styles.btn} focus:outline-none mt-8 place-self-start relative self-start align-start px-6 py-2 font-semibold text-md font-main capitalize rounded bg-primary`}
               onClick={() => {
                 window.location.href = "mailto:contact@ehmad.site";
               }}
+              title={"Contact me via email"}
             >
               {randomButtonText}
             </motion.button>
