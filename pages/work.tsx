@@ -1,11 +1,6 @@
 import { list, itemSlideUp } from "@helpers/animation";
 import { motion } from "framer-motion";
 import Heading from "@components/Heading";
-import Link from "next/link";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Image from "next/image";
 import MetaTags from "@components/MetaTags";
 
 const Work = () => {
