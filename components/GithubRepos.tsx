@@ -30,7 +30,7 @@ const GithubRepos = () => {
         // }
 
         const response = await fetch(
-          'https://api.github.com/users/mrxehmad/repos?sort=created&direction=desc&per_page=6',
+          'https://api.github.com/users/mrxehmad/repos?sort=created&direction=desc&per_page=9',
           { headers }
         );
 
@@ -56,7 +56,7 @@ const GithubRepos = () => {
           {
             name: 'mrxehmad.github.io',
             description: 'My personal portfolio website',
-            html_url: 'https://github.com/mrxehmad/mrxehmad.github.io',
+            html_url: 'https://github.com/mrxehmad/portfolio-site',
             stargazers_count: 0,
             forks_count: 0,
             created_at: new Date().toISOString()

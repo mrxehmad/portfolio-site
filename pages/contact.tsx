@@ -172,10 +172,10 @@ const Contact = () => {
                 >
                   <FontAwesomeIcon className="w-4" icon={faEnvelope} />
                   <a
-                    href="mailto:contact@ehmad.site"
+                    href="mailto:hi@ehmi.se"
                     className="text-lg font-main hover:text-primary transition-colors duration-200"
                   >
-                    contact@ehmad.site
+                    hi@ehmi.se
                   </a>
                 </motion.div>
                 {/* <motion.div

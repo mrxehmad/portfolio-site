@@ -11,20 +11,20 @@ import { motion } from "framer-motion";
 const About = () => {
   const skills = [
     "Docker",
-    "Kubernetes",
-    "Jenkins",
+    "Systems Administration",
+    "Cluster Management",
     "AWS",
-    "Terraform",
+    "Azure",
     "Ansible",
     "CI/CD",
     "Linux",
     "Git",
-    "Python",
+    "Automation",
     "Bash Scripting",
-    "Network Security",
+    "Network Security Practices",
     "Application Security",
     "Monitoring & Logging",
-    "Infrastructure as Code",
+    "Edge Computing",
   ];
   return (
     <>

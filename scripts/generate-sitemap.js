@@ -30,36 +30,41 @@ function getCurrentDate() {
   return new Date().toISOString().split('T')[0];
 }
 
-// Generate simple sitemap with sitemap links at top, then pages
+// Generate sitemap with separate sections
 function generateSitemap() {
   const currentDate = getCurrentDate();
   
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
-  xml += '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+  xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
   
-  // Add sitemap references at the top
-  xml += '  <!-- Tools Section -->\n';
-  xml += '  <sitemap>\n';
+  // Add sitemap references as regular URLs
+  xml += '  <!-- Sitemap References -->\n';
+  xml += '  <url>\n';
   xml += `    <loc>${SITE_URL}/tools/sitemap.xml</loc>\n`;
   xml += `    <lastmod>${currentDate}</lastmod>\n`;
-  xml += '  </sitemap>\n';
-  xml += '\n';
-  xml += '  <!-- Blog Section -->\n';
-  xml += '  <sitemap>\n';
+  xml += '    <changefreq>weekly</changefreq>\n';
+  xml += '    <priority>0.8</priority>\n';
+  xml += '  </url>\n';
+  xml += '  <url>\n';
   xml += `    <loc>${SITE_URL}/blog/sitemap.xml</loc>\n`;
   xml += `    <lastmod>${currentDate}</lastmod>\n`;
-  xml += '  </sitemap>\n';
+  xml += '    <changefreq>weekly</changefreq>\n';
+  xml += '    <priority>0.8</priority>\n';
+  xml += '  </url>\n';
   xml += '\n';
   
   // Add all pages
+  xml += '  <!-- Pages -->\n';
   PAGES.forEach((page) => {
-    xml += '  <sitemap>\n';
+    xml += '  <url>\n';
     xml += `    <loc>${SITE_URL}${page === '/' ? '' : page}</loc>\n`;
     xml += `    <lastmod>${currentDate}</lastmod>\n`;
-    xml += '  </sitemap>\n';
+    xml += '    <changefreq>monthly</changefreq>\n';
+    xml += `    <priority>${page === '/' ? '1.0' : '0.7'}</priority>\n`;
+    xml += '  </url>\n';
   });
   
-  xml += '</sitemapindex>\n';
+  xml += '</urlset>\n';
   
   return xml;
 }
@@ -75,4 +80,3 @@ fs.writeFileSync(SITEMAP_PATH, sitemap, 'utf8');
 
 console.log(`✅ Sitemap generated successfully at ${SITEMAP_PATH}`);
 console.log(`   Included ${PAGES.length} pages + 2 sitemap references`);
-

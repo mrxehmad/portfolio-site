@@ -12,6 +12,7 @@ import {
   faSun,
   faBlog,
   faUsers,
+  faTools,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Logo from "./Logo";
@@ -22,7 +23,8 @@ const Navbar = ({ setDarkTheme, isDarkTheme }) => {
     { link: "/", name: "home", icon: faHome },
     { link: "/projects", name: "projects", icon: faCode },
     { link: "/about", name: "about", icon: faAddressCard },
-    { link: "/blog", name: "blog", icon: faBlog, external: true },
+    { link: "/blog", name: "blog", icon: faBlog },
+    { link: "/tools", name: "tools", icon: faTools },
     { link: "/contact", name: "contact", icon: faEnvelope },
     { link: "/social", name: "socials", icon: faUsers },
   ];
@@ -44,15 +46,9 @@ const Navbar = ({ setDarkTheme, isDarkTheme }) => {
         <ul className="md:flex hidden space-x-6 items-center text-xl font-main capitalize">
           {routes.map((route, index) => (
             <li key={`${route.name}-${index}`} className="dark:text-gray-100">
-              {route.external ? (
-                <a href={route.link} target="_blank" rel="noopener noreferrer">
-                  {route.name}
-                </a>
-              ) : (
-                <Link href={route.link}>
-                  <a>{route.name}</a>
-                </Link>
-              )}
+              <Link href={route.link}>
+                <a>{route.name}</a>
+              </Link>
             </li>
           ))}
           <button
@@ -86,28 +82,14 @@ const Navbar = ({ setDarkTheme, isDarkTheme }) => {
         >
           {routes.map((route, index) => (
             <li key={`${route.name}-${index}`} onClick={() => setOpen(false)}>
-              {route.external ? (
-                <a 
-                  href={route.link} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="hover:text-primary text-gray-400 dark:text-gray-300 text-sm font-main capitalize"
-                >
+              <Link href={route.link}>
+                <a className="hover:text-primary text-gray-400 dark:text-gray-300 text-sm font-main capitalize">
                   <span className="block mb-2 w-8 h-8 mx-auto text-xl">
                     <FontAwesomeIcon icon={route.icon} />
                   </span>
                   <span className="text-sm">{route.name}</span>
                 </a>
-              ) : (
-                <Link href={route.link}>
-                  <a className="hover:text-primary text-gray-400 dark:text-gray-300 text-sm font-main capitalize">
-                    <span className="block mb-2 w-8 h-8 mx-auto text-xl">
-                      <FontAwesomeIcon icon={route.icon} />
-                    </span>
-                    <span className="text-sm">{route.name}</span>
-                  </a>
-                </Link>
-              )}
+              </Link>
             </li>
           ))}
         </ul>
