@@ -3,8 +3,8 @@ const path = require('path');
 
 // Site configuration
 const SITE_URL = 'https://ehmi.se';
-const OUTPUT_DIR = path.join(__dirname, '..', 'out');
-const SITEMAP_PATH = path.join(OUTPUT_DIR, 'sitemap.xml');
+const OUTPUT_DIR = path.join(__dirname, '..', 'public');
+const SITEMAP_PATH = path.join(OUTPUT_DIR, 'port-sitemap.xml');
 
 // Pages to include in sitemap (excluding 404, _app, api routes)
 const PAGES = [
@@ -37,21 +37,7 @@ function generateSitemap() {
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
   xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
   
-  // Add sitemap references as regular URLs
-  xml += '  <!-- Sitemap References -->\n';
-  xml += '  <url>\n';
-  xml += `    <loc>${SITE_URL}/tools/sitemap.xml</loc>\n`;
-  xml += `    <lastmod>${currentDate}</lastmod>\n`;
-  xml += '    <changefreq>weekly</changefreq>\n';
-  xml += '    <priority>0.8</priority>\n';
-  xml += '  </url>\n';
-  xml += '  <url>\n';
-  xml += `    <loc>${SITE_URL}/blog/sitemap.xml</loc>\n`;
-  xml += `    <lastmod>${currentDate}</lastmod>\n`;
-  xml += '    <changefreq>weekly</changefreq>\n';
-  xml += '    <priority>0.8</priority>\n';
-  xml += '  </url>\n';
-  xml += '\n';
+
   
   // Add all pages
   xml += '  <!-- Pages -->\n';
@@ -79,4 +65,4 @@ const sitemap = generateSitemap();
 fs.writeFileSync(SITEMAP_PATH, sitemap, 'utf8');
 
 console.log(`✅ Sitemap generated successfully at ${SITEMAP_PATH}`);
-console.log(`   Included ${PAGES.length} pages + 2 sitemap references`);
+console.log(`   Included ${PAGES.length} pages`);
