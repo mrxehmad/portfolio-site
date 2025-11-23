@@ -123,7 +123,7 @@ const Home = () => {
               custom={0.6}
               className={`${styles.btn} focus:outline-none mt-8 place-self-start relative self-start align-start px-6 py-2 font-semibold text-md font-main capitalize rounded bg-primary`}
               onClick={() => {
-                window.location.href = "mailto:contact@ehmad.site";
+                window.location.href = "mailto:hi@ehmi.se";
               }}
               title={"Contact me via email"}
             >
