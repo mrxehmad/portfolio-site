@@ -49,7 +49,7 @@ const itemSlideUp = {
 const Home = () => {
   return (
     <>
-      <MetaTags title="DevOps Engineer" />
+      <MetaTags title="Cybersecurity Analyst" />
       <section className="relative overflow-hidden min-h-screen w-full flex items-center md:pt-0 pt-16 dark:bg-dark-theme">
         <motion.h1
           initial="hidden"
@@ -58,7 +58,7 @@ const Home = () => {
           custom={0.6}
           className="absolute z-20 bottom-0 px-2 xl:hidden font-main uppercase font-black text-gray-300 dark:text-dark-gray md:text-7xl text-5xl"
         >
-          DevOps
+          
         </motion.h1>
         <div className="relative max-w-screen-lg px-2 w-full mx-auto">
           <div className="md:grid md:grid-cols-auto-2 md:grid-rows-auto-2 xl:gap-0 gap-4">
@@ -69,7 +69,7 @@ const Home = () => {
               custom={0.3}
               className="md:text-7xl text-4xl md:leading-normal dark:text-gray-100 font-black font-main text-black uppercase"
             >
-              <TypingAnimation />
+             Cybersecurity <br /> Analyst
             </motion.h1>
             <div className="md:space-x-16 justify-center items-center md:flex">
               <motion.div
@@ -86,8 +86,8 @@ const Home = () => {
                   custom={0.3}
                   className="md:text-2xl text-lg dark:text-gray-300 text-gray-700 font-lora capitalize"
                 >
-                  DevOps <br />
-                  engineer <br /> based in Pakistan.
+                  Cybersecurity Analyst / <br />
+                  DevOps engineer <br /> based in Pakistan.
                 </motion.p>
                 <motion.div
                   initial="hidden"
@@ -124,7 +124,7 @@ const Home = () => {
               custom={0.6}
               className={`${styles.btn} focus:outline-none mt-8 place-self-start relative self-start align-start px-6 py-2 font-semibold text-md font-main capitalize rounded bg-primary`}
               onClick={() => {
-                window.location.href = "mailto:contact@ehmad.site";
+                window.location.href = "mailto:hi@ehmi.se";
               }}
               title={"Contact me via email"}
             >

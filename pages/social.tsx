@@ -31,7 +31,7 @@ const links = [
   },
   {
     name: "Email",
-    url: "mailto:contact@ehmad.site",
+    url: "mailto:hi@ehmi.se",
   },
 ];
 
