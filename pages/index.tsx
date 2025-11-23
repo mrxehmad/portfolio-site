@@ -11,6 +11,7 @@ import MetaTags from "@components/MetaTags";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import Shape from "@components/Shape";
+import TypingAnimation from "@components/TypingAnimation";
 const buttonTexts = [
   "Contact Me",
   "Request a Consultation",
@@ -68,7 +69,7 @@ const Home = () => {
               custom={0.3}
               className="md:text-7xl text-4xl md:leading-normal dark:text-gray-100 font-black font-main text-black uppercase"
             >
-              Dev-Ops <br /> engineer
+              <TypingAnimation />
             </motion.h1>
             <div className="md:space-x-16 justify-center items-center md:flex">
               <motion.div
