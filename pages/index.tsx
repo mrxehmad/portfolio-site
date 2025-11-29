@@ -11,7 +11,6 @@ import MetaTags from "@components/MetaTags";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import Shape from "@components/Shape";
-import TypingAnimation from "@components/TypingAnimation";
 const buttonTexts = [
   "Contact Me",
   "Request a Consultation",
