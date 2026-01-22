@@ -17,7 +17,7 @@ const NotFound = () => {
           className={`focus:outline-none col-start-2 mt-8 place-self-start relative self-start align-start px-6 py-2 font-semibold text-md font-main capitalize rounded bg-primary`}
         >
           <Link href="/">
-            <a>Back Home</a>
+            <a>Back Home :)</a>
           </Link>
         </button>
       </div>
